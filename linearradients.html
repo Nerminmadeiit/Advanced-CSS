@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linear Gradients</title>
+    <style>
+      body {
+        background-color: #333;
+      }
+      /* Linear */
+      .gradient-box1 {
+        width: 400px;
+        height: 400px;
+        background: linear-gradient(45deg, #ff89be, #ffc2dd, #ffe4ed);
+        border-radius: 10px;
+        margin: 30px auto;
+        box-shadow: #f4f3f3 0 0 10px;
+      }
+      .gradient-circle {
+        width: 400px;
+        height: 400px;
+        background: linear-gradient(135deg, #8350cf, #87b2ed, #7de7cd);
+        border-radius: 50%;
+        margin: 30px auto;
+      }
+      h1 {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        background: linear-gradient(45deg, #8350cf, #ff89be, #7de7cd, #5555ec);
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+
+        font-size: 4rem;
+      }
+      .border {
+        background: linear-gradient(45deg, #8350cf, #7de7cd, #ffc2dd, #cdef65);
+        border-radius: 20px;
+        padding: 10px;
+      }
+      .content {
+        padding: 20px;
+        text-align: center;
+        color: #333;
+        font-size: 2rem;
+        background: #fff;
+        border-radius: 20px;
+      }
+
+      /* Radial */
+      .radial-circle {
+        margin: 30px auto;
+        width: 400px;
+        height: 200px;
+        background: radial-gradient(
+          ellipse,
+          #ff89be 20%,
+          #b359dd 50%,
+          #5555ec 90%
+        );
+        border-radius: 40px;
+        box-shadow: #fff 0 0 20px;
+      }
+      .card1 {
+        width: 500px;
+        height: 500px;
+        margin: 50px auto;
+        background: radial-gradient(
+          circle at center,
+          #333 7%,
+          #769df9 25%,
+          #fff 40%,
+          #628ced 50%,
+          #2f0df3 70%
+        );
+        border-radius: 50%;
+        border: 5px solid #fff;
+      }
+      .icons {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+        padding: 20px;
+        color: #ffffff;
+      }
+
+      /* conic */
+      .conic-gradient {
+        width: 400px;
+        height: 400px;
+        margin: 30px auto;
+        background: conic-gradient(
+          #eb4eaf 30%,
+          #ef9bde 75%,
+          #ed0297 90%,
+          #fc7ee1 100%
+        );
+        border-radius: 50%;
+        box-shadow: #fff 0 0 20px;
+      }
+      .conic-gradient2 {
+        width: 200px;
+        height: 200px;
+        margin: 30px auto;
+        background: conic-gradient(
+          from 90deg at 70% 50%,
+          #7de7cd 0%,
+          #87b2ed 25%,
+          #ccf092 75%,
+          #5555ec 100%
+        );
+        border-radius: 20px;
+        border: 2px solid #fff;
+        box-shadow: #0724fa 0 0 20px;
+      }
+      .circle-form {
+        width: 300px;
+        height: 300px;
+        margin: 30px auto;
+        background: conic-gradient(
+          #7de7cd 0% 30%,
+          #ed0297 30% 70%,
+          #ffc2dd 70% 100%
+        );
+        border-radius: 50%;
+      }
+      .box {
+        width: 400px;
+        height: 400px;
+        margin: 30px auto;
+        background: #000;
+        border-radius: 20px;
+        position: relative;
+      }
+      @property --angle {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: true;
+      }
+      .box::after,
+      .box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit; /* inherit means it takes the border-radius of the parent */
+        background: inherit;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* top: 155px; */ /* we remove it to have both shapes on the same position as the original one */
+        background: conic-gradient(
+          from var(--angle),
+          #1b0149,
+          #ef6fe4,
+          #1b0149
+        );
+        animation: animate 5s linear infinite;
+        z-index: -1;
+        padding: 2px;
+      }
+      .box::before {
+        /* top: 260px; */
+        filter: blur(20px);
+      }
+      @keyframes animate {
+        to {
+          --angle: 360deg;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Linear -->
+    <div class="gradient-box1"></div>
+    <div class="gradient-circle"></div>
+    <h1>Hey Besties!</h1>
+    <div class="card">
+      <div class="border">
+        <div class="content">Happy Thursday!</div>
+      </div>
+    </div>
+
+    <!-- Radial -->
+    <div class="radial-circle"></div>
+
+    <div class="card1"></div>
+
+    <!-- Conic -->
+    <div class="conic-gradient"></div>
+    <div class="conic-gradient2"></div>
+    <div class="circle-form"></div>
+    <div class="box"></div>
+  </body>
+</html>
